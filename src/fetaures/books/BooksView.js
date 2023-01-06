@@ -12,10 +12,11 @@ const BooksView = () => {
 
     return (
         <div>
+            <h2>List of books</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        {/* <th>ID</th> */}
                         <th>Title</th>
                         <th>Author</th>
                         <th>Action</th>
@@ -25,8 +26,8 @@ const BooksView = () => {
                     {books && books.map(book => {
                         const { id, title, author } = book;
                         return (
-                            <tr>
-                                <td>{id}</td>
+                            <tr key={book.id}>
+                                {/* <td>{id}</td> */}
                                 <td>{title}</td>
                                 <td>{author}</td>
                                 <td>

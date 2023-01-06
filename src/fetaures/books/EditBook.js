@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { updateBook } from './BooksSlice';
 
 const EditBook = () => {
     const location = useLocation();
-    console.log(location);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [id, setId] = useState(location.state.id);
     const [title, setTitle] = useState(location.state.title);
     const [author, setAuthor] = useState(location.state.author);
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(updateBook({ id, title, author }));
+        navigate("/show-books", { redirect: true });
     };
     return (
         <div>
